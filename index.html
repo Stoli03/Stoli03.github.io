@@ -588,10 +588,13 @@
 <script>
   function scrollToForm() {
     const element = document.getElementById('contactForm');
+    const offset = 0; // change to -60 if you have a fixed header
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset + offset;
 
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
     });
   }
 </script>
@@ -980,6 +983,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 </script>
 </body>
 </html>
+
 
 
 

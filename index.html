@@ -589,13 +589,13 @@
   function scrollToForm() {
     const element = document.getElementById('contactForm');
 
-    window.scrollTo({
-      top: element,
-      behavior: 'smooth'
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     });
   }
 </script>
-
+  
 <!-- Problem / Solution / Result Section -->
 <section class="section">
   <div class="container">
@@ -980,6 +980,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 </script>
 </body>
 </html>
+
 
 
 

@@ -588,10 +588,9 @@
 <script>
   function scrollToForm() {
     const element = document.getElementById('contactForm');
-    const y = element.getBoundingClientRect().height * 4.6;
 
     window.scrollTo({
-      top: y,
+      top: element,
       behavior: 'smooth'
     });
   }
@@ -981,6 +980,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 </script>
 </body>
 </html>
+
 
 
 

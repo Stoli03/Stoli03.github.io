@@ -901,22 +901,30 @@
 </footer>
 
 <script>
-  // Form submission handling
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    // Hide form and show success message
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('successMessage').style.display = 'block';
-
-    // Reset form and show it again after 3 seconds
-    setTimeout(function() {
-      document.getElementById('contactForm').reset();
-      document.getElementById('successMessage').style.display = 'none';
-      document.getElementById('contactForm').style.display = 'block';
-    }, 3000);
+  emailjs.send("service_y5izs2n", "template_xdf9qw6", {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    package: document.getElementById("package").value,
+    message: document.getElementById("message").value
+  })
+  .then(function() {
+    document.getElementById("contactForm").style.display = "none";
+    document.getElementById("successMessage").style.display = "block";
+  }, function(error) {
+    alert("Fehler beim Senden: " + error.text);
   });
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("A0mHTlJjOHo3OfIdO");
+  })();
 </script>
 </body>
 </html>
+
 

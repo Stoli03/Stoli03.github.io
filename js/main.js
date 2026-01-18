@@ -1,33 +1,18 @@
-function scrollToForm() {
-    const element = document.getElementById("contactFormSection");
-    const offset = -250;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset + offset;
-
-    window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-    });
-}
-
-(function () {
-    emailjs.init("A0mHTlJjOHo3OfIdO");
-})();
-
 document.getElementById("contactForm").addEventListener("submit", function (e) {
     e.preventDefault();
+    
+    contactForm.style.display = "none";
+    successMessage.style.display = "block";
 
     emailjs.send("service_y5izs2n", "template_xdf9qw6", {
         name: name.value,
         email: email.value,
         package: package.value,
         message: message.value
-    }).then(() => {
-        contactForm.style.display = "none";
-        successMessage.style.display = "block";
+    }).catch((error) => {
+        console.error("EmailJS error:", error);
     });
 });
-
 window.addEventListener("load", function() {
     if (!localStorage.getItem("cookiesAccepted")) {
         document.getElementById("cookieConsent").style.display = "flex";
@@ -66,4 +51,5 @@ function enableTracking() {
         gtag('js', new Date());
         gtag('config', 'G-477R5NEW3E');
     }
+
 }
